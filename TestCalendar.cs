@@ -17,6 +17,11 @@ namespace TestControls
     /// Calendar project
     /// Will contain a grid 7x5 representing all the possible days in a month
     /// Each day block wil have a number associated with them (1, 2, ..., 31)
+    /// Pressing 'a' will decrease month and 'd' will increase month
+    /// Overflowing month error
+    /// Added two special Panel banners: 
+    /// - One top for future menu
+    /// - one center that is the viewport of the calendar
     /// 
     /// [TBA 1]
     /// Add a bar representing the current selected year/month
