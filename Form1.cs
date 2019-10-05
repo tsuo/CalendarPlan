@@ -32,9 +32,19 @@ namespace TestControls
             char key = e.KeyChar;
 
             if (key == 'a')
-                testCalendar1.ChangeMonth(cur.Year, (cur.Month - 1));
+            {
+                if (cur.Month == 1)
+                    testCalendar1.ChangeMonth(cur.Year - 1, 12);
+                else 
+                    testCalendar1.ChangeMonth(cur.Year, (cur.Month - 1));
+            }
             else if (key == 'd')
-                testCalendar1.ChangeMonth(cur.Year, (cur.Month + 1));
+            {
+                if (cur.Month == 12)
+                    testCalendar1.ChangeMonth(cur.Year + 1, 1);
+                else
+                    testCalendar1.ChangeMonth(cur.Year, (cur.Month + 1));
+            }
             //testCalendar1.ChangeMonth(cur.Year, cur.Month + 1);
         }
 

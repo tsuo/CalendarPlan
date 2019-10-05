@@ -15,32 +15,40 @@ namespace TestControls
         private bool setup;
         private Panel bg;
         private Label text;
+        private Color tColor;
+        private bool centered;
 
-        public DateBlock()
+        public DateBlock(Color textcol, bool center = false)
         {
             InitializeComponent();
             setup = false;
             this.bg = new Panel();
             this.text = new Label { Text = "" };
+            this.tColor = textcol;
+            this.centered = center;
             Setup();
             
         }
 
-        public DateBlock(String d)
+        public DateBlock(String val, Color textcol, bool center = false)
         {
             InitializeComponent();
             setup = false;
             this.bg = new Panel();
-            this.text = new Label { Text = d };
+            this.text = new Label { Text = val };
+            this.tColor = textcol;
+            this.centered = center;
             Setup();
         }
 
-        public DateBlock(int d)
+        public DateBlock(int val, Color textcol, bool center = false)
         {
             InitializeComponent();
             setup = false;
             this.bg = new Panel();
-            this.text = new Label { Text = d.ToString() };
+            this.text = new Label { Text = val.ToString() };
+            this.tColor = textcol;
+            this.centered = center;
             Setup();
         }
 
@@ -62,7 +70,19 @@ namespace TestControls
                 SetStyle(ControlStyles.SupportsTransparentBackColor, true);
                 this.text.Font = new Font(FontFamily.GenericSansSerif, 15F);
                 this.text.Size = bg.Size;
+                this.text.ForeColor = this.tColor;
+                if (this.centered)
+                {
+                    //this.text.AutoSize = false;
+                    this.text.TextAlign = ContentAlignment.MiddleCenter;
+                    this.text.Dock = DockStyle.Fill;
+                }
+
                 this.bg.Controls.Add(this.text);
+                this.bg.Dock = DockStyle.Fill;
+
+
+                this.Dock = DockStyle.Fill;
                 this.Controls.Add(this.bg);
 
                 /*
