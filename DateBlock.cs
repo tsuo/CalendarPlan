@@ -13,12 +13,14 @@ namespace TestControls
     public partial class DateBlock : UserControl
     {
         private bool setup;
+        private Panel bg;
         private Label text;
 
         public DateBlock()
         {
             InitializeComponent();
             setup = false;
+            this.bg = new Panel();
             this.text = new Label { Text = "" };
             Setup();
             
@@ -28,6 +30,7 @@ namespace TestControls
         {
             InitializeComponent();
             setup = false;
+            this.bg = new Panel();
             this.text = new Label { Text = d };
             Setup();
         }
@@ -36,6 +39,7 @@ namespace TestControls
         {
             InitializeComponent();
             setup = false;
+            this.bg = new Panel();
             this.text = new Label { Text = d.ToString() };
             Setup();
         }
@@ -56,12 +60,20 @@ namespace TestControls
             if(!setup)
             {
                 SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+                this.text.Font = new Font(FontFamily.GenericSansSerif, 15F);
+                this.text.Size = bg.Size;
+                this.bg.Controls.Add(this.text);
+                this.Margin = Padding.Empty;
+                this.Controls.Add(this.bg);
+
+                /*
                 //SetStyle(ControlStyles.Opaque, true);
                 this.BackColor = Color.Transparent;
                 this.text.Size = this.Size;
                 //this.text.Size = new Size(200,28);
                 this.text.Font = new Font(FontFamily.GenericMonospace, 20, FontStyle.Bold);
                 this.Controls.Add(this.text);
+                */
             }
         }
         

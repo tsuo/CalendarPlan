@@ -18,6 +18,7 @@ namespace TestControls
             this.KeyPreview = true;
             //this.Focus();
             //MessageBox.Show("t");
+            MessageBox.Show($"{this.Width},{this.Height}");
         }
 
         protected override void OnResize(EventArgs e)

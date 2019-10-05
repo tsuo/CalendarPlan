@@ -44,22 +44,25 @@ namespace TestControls
         private GregorianCalendar cal;
         private DateTime curMonth;
         private Panel bantop;
-        private Panel bancal;
+        private TableLayoutPanel bancal;
+        private TableLayoutPanel banfull;
+
+
 
 
         public TestCalendar()
         {
             InitializeComponent();
-            
+
             setup = false;
             cal = new GregorianCalendar(GregorianCalendarTypes.USEnglish);
             curMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            
+
             Setup();
         }
 
 
-        public void Setup()
+        private void Setup()
         {
             if (!setup)
             {
@@ -68,25 +71,72 @@ namespace TestControls
                 pixWid = 0;
                 pixHei = 0;
 
-                bantop = new Panel();
-                bancal = new Panel();
+                bantop = new Panel
+                {
+                    Location = new Point(0, 0),
+                    Size = new Size(this.Width, this.Height / 10),
+                    BackColor = Color.White
+                };
+
+
+                bancal = new TableLayoutPanel
+                {
+                    ColumnCount = numCol,
+                    RowCount = numRow,
+                    Dock = DockStyle.Fill,
+                    BackColor = Color.Beige,
+                };
+
+                //banfull = new TableLayoutPanel { RowCount = 10, ColumnCount = 1 };
+
+
+                int first = (int)cal.GetDayOfWeek(curMonth);
+                int maxday = cal.GetDaysInMonth(curMonth.Year, curMonth.Month);
 
                 dayBoxes = new Panel[numRow * numCol];
+
+                int l = 0;
                 for (int i = 0; i < numRow * numCol; i++)
                 {
-                    dayBoxes[i] = new Panel();
-                    if (i % 2 == 0)
-                        dayBoxes[i].BackColor = Color.LightPink;
-                    if (i % 2 == 1)
-                        dayBoxes[i].BackColor = Color.LightGray;
+                    //default basic style of each date block
+                    dayBoxes[i] = new Panel
+                    {
+                        BorderStyle = BorderStyle.FixedSingle,
+                        BackColor = (i % 2 == 0) ? Color.LightPink : Color.LightGray,
+
+                    };
+                    //////
+
+                    if (i >= first && l < maxday)
+                    {
+                        dayBoxes[i].Controls.Add(new DateBlock(l + 1));
+                        l++;
+                    }
+
+                    //MessageBox.Show($"{i%numCol},{i/numCol}");
+                    bancal.Controls.Add(dayBoxes[i], i % numCol, i / numCol);
+
+
                 }
 
-                //this.SendToBack();
-                DrawCalendar();
+                this.Controls.Add(bancal);
+                //drawing calendar
+
+
                 setup = true;
             }
         }
 
+        public void DrawCalendar()
+        {
+            SuspendDrawing();
+
+
+
+            ResumeDrawing();
+        }
+
+        /*
         public void DrawCalendar()
         {
             SuspendDrawing();
@@ -102,7 +152,6 @@ namespace TestControls
             bancal.Size = new Size(this.Width, this.Height - bantop.Height);
             bancal.BackColor = Color.Beige;
 
-
             pixWid = bancal.Width/numCol;
             pixHei = bancal.Height/numRow;
 
@@ -115,14 +164,16 @@ namespace TestControls
             {
                 for(int x = 0; x < numCol; x++)
                 {
-                    dayBoxes[i].Size = new Size(pixWid, pixHei);
-                    dayBoxes[i].Location = new Point(x*pixWid, y*pixHei);
-                    dayBoxes[i].BorderStyle = BorderStyle.FixedSingle;
-                    
-                    if(i >= first && l < maxday)
+                    //dayBoxes[i].Size = new Size(pixWid, pixHei);
+                    //dayBoxes[i].Location = new Point(x*pixWid, y*pixHei);
+
+                    if (!setup)
                     {
-                        dayBoxes[i].Controls.Add(new DateBlock(l+1));
-                        l++;
+                        if (i >= first && l < maxday)
+                        {
+                            dayBoxes[i].Controls.Add(new DateBlock(l + 1));
+                            l++;
+                        }
                     }
 
                     bancal.Controls.Add(dayBoxes[i]);
@@ -135,7 +186,7 @@ namespace TestControls
             this.Controls.Add(bancal);
 
             ResumeDrawing();
-        }
+        }*/
 
         public DateTime GetCurrentMonth()
         {
@@ -169,13 +220,18 @@ namespace TestControls
                     }
                 }
             }
-            
+
             ResumeDrawing();
         }
 
+
         private void TestCalendar_Resize(object sender, EventArgs e)
         {
-            DrawCalendar();
+            //SuspendDrawing();
+            ///this.Controls.Clear();
+            //this.Controls.Add(bancal);
+
+            //ResumeDrawing();
         }
 
 
