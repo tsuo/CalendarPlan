@@ -24,8 +24,8 @@ namespace TestControls
     /// Both the top and calendar banners are added to the full banner
     /// 
     /// [TBA 1]
-    /// Add a bar representing the current selected year/month
-    /// Ways to switch months
+    /// Ways to switch months (only test version works)
+    /// Clicking day boxes interacts with them
     /// Adding events on any day
     /// Changing day block colors
     /// Linking canvas lms feature
