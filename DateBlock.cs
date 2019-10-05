@@ -63,7 +63,6 @@ namespace TestControls
                 this.text.Font = new Font(FontFamily.GenericSansSerif, 15F);
                 this.text.Size = bg.Size;
                 this.bg.Controls.Add(this.text);
-                this.Margin = Padding.Empty;
                 this.Controls.Add(this.bg);
 
                 /*
