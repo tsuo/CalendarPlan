@@ -1,0 +1,11 @@
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\bin\Debug\TestControls.exe.config
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\bin\Debug\TestControls.exe
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\bin\Debug\TestControls.pdb
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.csprojAssemblyReference.cache
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.Properties.Resources.resources
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.TestCalendar.resources
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.csproj.GenerateResource.cache
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.csproj.CoreCompileInputs.cache
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.exe
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.pdb
+C:\Users\tsuoi\Desktop\Code\vsC#\TestControls\TestControls\obj\Debug\TestControls.Form1.resources
