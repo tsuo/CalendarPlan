@@ -12,10 +12,13 @@ namespace TestControls
 {
     public partial class Form1 : Form
     {
+        bool keyreleased;
+
         public Form1()
         {
             InitializeComponent();
             this.KeyPreview = true;
+            this.keyreleased = true;
             //this.Focus();
             //MessageBox.Show("t");
         }
@@ -28,25 +31,35 @@ namespace TestControls
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DateTime cur = testCalendar1.GetCurrentMonth();
-            char key = e.KeyChar;
+            if (this.keyreleased)
+            {
+                this.keyreleased = false;
 
-            if (key == 'a')
-            {
-                if (cur.Month == 1)
-                    testCalendar1.ChangeMonth(cur.Year - 1, 12);
-                else 
-                    testCalendar1.ChangeMonth(cur.Year, (cur.Month - 1));
+                DateTime cur = testCalendar1.GetCurrentMonth();
+                char key = e.KeyChar;
+
+                if (key == 'a')
+                {
+                    if (cur.Month == 1)
+                        testCalendar1.ChangeMonth(cur.Year - 1, 12);
+                    else
+                        testCalendar1.ChangeMonth(cur.Year, (cur.Month - 1));
+                }
+                else if (key == 'd')
+                {
+                    if (cur.Month == 12)
+                        testCalendar1.ChangeMonth(cur.Year + 1, 1);
+                    else
+                        testCalendar1.ChangeMonth(cur.Year, (cur.Month + 1));
+                }
+                //testCalendar1.ChangeMonth(cur.Year, cur.Month + 1);
             }
-            else if (key == 'd')
-            {
-                if (cur.Month == 12)
-                    testCalendar1.ChangeMonth(cur.Year + 1, 1);
-                else
-                    testCalendar1.ChangeMonth(cur.Year, (cur.Month + 1));
-            }
-            //testCalendar1.ChangeMonth(cur.Year, cur.Month + 1);
         }
 
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A || e.KeyCode == Keys.D)
+                this.keyreleased = true;
+        }
     }
 }

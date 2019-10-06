@@ -96,5 +96,9 @@ namespace TestControls
             }
         }
         
+        public void ChangeText(String t)
+        {
+            this.text.Text = t;
+        }
     }
 }

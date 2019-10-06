@@ -134,17 +134,20 @@ namespace TestControls
                         Margin = Padding.Empty,
                         Dock = DockStyle.Fill
                     };
-                    if (i < first || l >= maxday)   // if its not a valid day of the month
-                        dayBoxes[i].BackColor = Color.White;
-                    else                            //if it is a valid day of the month
-                        dayBoxes[i].BackColor = (i % 2 == 0) ? Color.FromArgb(215, 215, 215) : Color.FromArgb(235, 235, 235);
                     //////
+
 
                     // if within range of the valid month days, then show the day number in day boxes
                     if (i >= first && l < maxday)
                     {
-                        dayBoxes[i].Controls.Add(new DateBlock(l + 1, Color.Black));
+                        dayBoxes[i].BackColor = (i % 2 == 0) ? Color.FromArgb(215, 215, 215) : Color.FromArgb(235, 235, 235);
+                        dayBoxes[i].Controls.Add(new DateBlock($"{l+1}", Color.Black));
                         l++;
+                    }
+                    else
+                    {
+                        dayBoxes[i].BackColor = Color.White;
+                        dayBoxes[i].Controls.Add(new DateBlock("", Color.Black));
                     }
 
                     // add the box to table cell
@@ -179,27 +182,23 @@ namespace TestControls
                 int maxday = cal.GetDaysInMonth(curMonth.Year, curMonth.Month);
 
                 // clear old text from month/year box
-                bantop.Controls.Clear();
-                bantop.Controls.Add(new DateBlock($"{curMonth.Month}/{curMonth.Year}", Color.White, true));
+                //bantop.Controls.Clear();
+                (bantop.Controls[0] as DateBlock).ChangeText($"{curMonth.Month}/{curMonth.Year}");
 
                 //// redrawing dates on day boxes
                 int l = 0;
                 for (int i = 0; i < numRow * numCol; i++)
                 {
-                    // clear all old texts from all day boxes
-                    dayBoxes[i].Controls.Clear();
-
-                    // alternating box numbers
-                    if (i < first || l >= maxday)   // if its not a valid day of the month
-                        dayBoxes[i].BackColor = Color.White;
-                    else                            //if it is a valid day of the month
-                        dayBoxes[i].BackColor = (i % 2 == 0) ? Color.FromArgb(215, 215, 215) : Color.FromArgb(235, 235, 235);
-
-                    // if the index is in range of the legal dates, draw the date number
                     if (i >= first && l < maxday)
                     {
-                        dayBoxes[i].Controls.Add(new DateBlock(l + 1, Color.Black));
+                        dayBoxes[i].BackColor = (i % 2 == 0) ? Color.FromArgb(215, 215, 215) : Color.FromArgb(235, 235, 235);
+                        (dayBoxes[i].Controls[0] as DateBlock).ChangeText($"{l + 1}");
                         l++;
+                    }
+                    else
+                    {
+                        dayBoxes[i].BackColor = Color.White;
+                        (dayBoxes[i].Controls[0] as DateBlock).ChangeText("");
                     }
                 }
             }
