@@ -14,6 +14,8 @@ namespace TestControls
 {
 
     /// <summary>
+    /// 
+    /// [PROGRESS REPORT]
     /// Calendar project
     /// Will contain a grid 7x5 representing all the possible days in a month
     /// Each day block wil have a number associated with them (1, 2, ..., 31)
@@ -22,15 +24,24 @@ namespace TestControls
     /// A top banner will represent the month/year currently selected
     /// The calendar itself resides an in a Table Layout Panel
     /// Both the top and calendar banners are added to the full banner
+    /// Optimized day boxes so that date boxes are originally defaulted to ""
+    /// Call ChangeText whenever needed
     /// 
-    /// [TBA 1]
+    /// [TIER 1]
     /// Ways to switch months (only test version works)
-    /// Clicking day boxes interacts with them
-    /// Adding events on any day
-    /// Changing day block colors
-    /// Linking canvas lms feature
+    /// - [done (through parent form implementation)] a and d buttons change months
+    /// - need to implement buttons to change month
+    /// - Implement drop down box of dates to change month
     /// 
-    /// [TBA 2]
+    /// [TIER 2]
+    /// Clicking day boxes interacts with them
+    /// - Add text to day box
+    /// - Adding events on any day (basically specialized text objects)
+    /// - Changing day block colors
+    /// - Linking canvas lms feature
+    /// 
+    /// [TIER 3]
+    /// Reminder feature
     /// Redesign all graphics
     /// Fancy animations
     /// 
@@ -209,7 +220,6 @@ namespace TestControls
 
         private void TestCalendar_Resize(object sender, EventArgs e)
         {
-
         }
 
 
