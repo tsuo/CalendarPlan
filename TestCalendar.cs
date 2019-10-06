@@ -17,6 +17,8 @@ namespace TestControls
     /// 
     /// [PROGRESS REPORT]
     /// Calendar project
+    /// 
+    /// [CURRENT TIER]: 1
     /// Will contain a grid 7x5 representing all the possible days in a month
     /// Each day block wil have a number associated with them (1, 2, ..., 31)
     /// Pressing 'a' will decrease month and 'd' will increase month
@@ -41,9 +43,20 @@ namespace TestControls
     /// - Linking canvas lms feature
     /// 
     /// [TIER 3]
-    /// Reminder feature
+    /// Allow custom fonts
     /// Redesign all graphics
     /// Fancy animations
+    /// Reminder feater
+    /// 
+    /// [TIER 4]
+    /// Adding plugin supports
+    /// User-level theme changing
+    /// - ex: Dark theme/ light theme
+    /// - ex: Uploading image and use it as bg for desired controls
+    /// 
+    /// [TIER 5]
+    /// NETWORKED
+    /// MAYBEM MULTITHREAD
     /// 
     /// </summary>
 
@@ -57,7 +70,6 @@ namespace TestControls
         private Panel bantop;
         private TableLayoutPanel bancal;
         private TableLayoutPanel banfull;
-
 
 
 
@@ -192,8 +204,7 @@ namespace TestControls
                 int first = (int)cal.GetDayOfWeek(curMonth);         // update first week day of month
                 int maxday = cal.GetDaysInMonth(curMonth.Year, curMonth.Month);
 
-                // clear old text from month/year box
-                //bantop.Controls.Clear();
+                // update top banner text
                 (bantop.Controls[0] as DateBlock).ChangeText($"{curMonth.Month}/{curMonth.Year}");
 
                 //// redrawing dates on day boxes

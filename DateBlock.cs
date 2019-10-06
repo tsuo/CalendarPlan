@@ -68,7 +68,7 @@ namespace TestControls
             if(!setup)
             {
                 SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-                this.text.Font = new Font(FontFamily.GenericSansSerif, 15F);
+                this.text.Font = new Font(new FontFamily("Georgia"), 15F);
                 this.text.Size = bg.Size;
                 this.text.ForeColor = this.tColor;
                 if (this.centered)
@@ -81,18 +81,8 @@ namespace TestControls
                 this.bg.Controls.Add(this.text);
                 this.bg.Dock = DockStyle.Fill;
 
-
                 this.Dock = DockStyle.Fill;
                 this.Controls.Add(this.bg);
-
-                /*
-                //SetStyle(ControlStyles.Opaque, true);
-                this.BackColor = Color.Transparent;
-                this.text.Size = this.Size;
-                //this.text.Size = new Size(200,28);
-                this.text.Font = new Font(FontFamily.GenericMonospace, 20, FontStyle.Bold);
-                this.Controls.Add(this.text);
-                */
             }
         }
         
