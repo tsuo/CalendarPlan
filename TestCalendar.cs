@@ -61,7 +61,7 @@ namespace TestControls
             Setup();
         }
 
-
+        //// initial setup of the calendar
         private void Setup()
         {
             if (!setup)
@@ -169,6 +169,7 @@ namespace TestControls
             return curMonth;
         }
 
+        //// Trigger everytime a month is change to update the date boxes
         public void ChangeMonth(int year, int month)
         {
             SuspendDrawing();
