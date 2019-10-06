@@ -61,7 +61,7 @@ namespace TestControls
             Setup();
         }
 
-        //// initial setup of the calendar
+
         private void Setup()
         {
             if (!setup)
@@ -94,7 +94,7 @@ namespace TestControls
                 {
                     Location = new Point(0, 0),
                     Size = new Size(this.Width, this.Height / 10),
-                    BackColor = Color.FromArgb(0,0,0),
+                    BackColor = Color.FromArgb(0, 0, 0),
                     Dock = DockStyle.Fill,
                     Margin = Padding.Empty,
                 };
@@ -141,7 +141,7 @@ namespace TestControls
                     if (i >= first && l < maxday)
                     {
                         dayBoxes[i].BackColor = (i % 2 == 0) ? Color.FromArgb(215, 215, 215) : Color.FromArgb(235, 235, 235);
-                        dayBoxes[i].Controls.Add(new DateBlock($"{l+1}", Color.Black));
+                        dayBoxes[i].Controls.Add(new DateBlock($"{l + 1}", Color.Black));
                         l++;
                     }
                     else
@@ -169,7 +169,6 @@ namespace TestControls
             return curMonth;
         }
 
-        //// Trigger everytime a month is change to update the date boxes
         public void ChangeMonth(int year, int month)
         {
             SuspendDrawing();
